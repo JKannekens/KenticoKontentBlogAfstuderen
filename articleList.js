@@ -21,7 +21,7 @@ deliveryClient
         "article-teaser",
         "src",
         item.teaser_image.value && item.teaser_image.value.length
-          ? JSON.parse(item.teaser_image.value)[0].url
+          ? JSON.parse(item.teaser_image.value)[0].secure_url
           : undefined
       );
       const title = createElement(

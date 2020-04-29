@@ -40,7 +40,7 @@ deliveryClient
       "img",
       "article-header",
       "src",
-      JSON.parse(article.teaser_image.value)[0].url
+      JSON.parse(article.teaser_image.value)[0].secure_url
     );
     const title = createElement(
       "h2",
