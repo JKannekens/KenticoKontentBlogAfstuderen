@@ -54,8 +54,23 @@ deliveryClient
       "innerHTML",
       article.body_copy.resolveHtml()
     );
-
-    // Add nodes to DOM
+    if (article.form_selector.value) {
+      var tmp = document.createElement("div");
+      tmp.innerHTML = JSON.parse(
+        article.form_selector.value
+      ).publish.embed_code;
+      var script = tmp.getElementsByTagName("script")[0];
+      var src = script.src;
+      $.getScript(src)
+        .done(function (script, textStatus) {
+          $("body").append(
+            JSON.parse(article.form_selector.value).publish.embed_code
+          );
+        })
+        .fail(function (jqxhr, settings, exception) {
+          $("div.log").text("Triggered ajaxError handler.");
+        });
+    }
     articleContainer.append(headerImage, title, body);
     return;
   })
